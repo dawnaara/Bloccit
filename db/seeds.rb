@@ -9,6 +9,14 @@
      body:   RandomData.random_paragraph
    )
  end
+
+ Post.find_or_create_by(
+ # #2
+     title:  "Yumyum"
+     body:   "Yumyum"
+   )
+ end
+ 
  posts = Post.all
  
  # Create Comments
