@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get 'welcome/posts'
 
+  get 'posts/edit'
+
+  get 'posts/destroy'
+
   root 'welcome#index'
   
 end
