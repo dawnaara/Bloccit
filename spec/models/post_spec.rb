@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-    let(:name) { RandomData.random_sentence }
-   let(:description) { RandomData.random_paragraph }
-   let(:title) { RandomData.random_sentence }
-   let(:body) { RandomData.random_paragraph }
-   let(:topic) { Topic.create!(name: name, description: description) }
-   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
+  let(:name) { RandomData.random_sentence }
+  let(:description) { RandomData.random_paragraph }
+  let(:title) { RandomData.random_sentence }
+  let(:body) { RandomData.random_paragraph }
+  let(:topic) { Topic.create!(name: name, description: description) }
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
    let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
    it { is_expected.to have_many(:labelings) }
@@ -77,5 +77,11 @@ RSpec.describe Post, type: :model do
          expect(post.rank).to eq (old_rank - 1)
        end
      end
-   end
+
+    describe "#create_vote" do
+      it "creates a new vote for the post on which it's called" do
+        expect(create_vote).to eq (user) 
+      end
+    end
+  end
 end
