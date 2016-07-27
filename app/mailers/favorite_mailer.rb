@@ -13,7 +13,9 @@ default from: "dawnaara@gmail.com"
      mail(to: user.email, subject: "New comment on #{post.title}")
    end
 
-   def new_post
+   def new_post(user, post)
+    @user = user
+    @post = post
    	mail(to: user.email, subject: "You favorited #{post.title} and will receive updates when commented on.")   
    end
 end
